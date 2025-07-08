@@ -45,8 +45,8 @@
     "name": "Emilia-Romagna Grand Prix",
     "date-start": "2025-05-16",
     "date-end": "2025-05-18",
-    "latitude": 44.34444388024828,
-    "longitude": 11.71797174103097
+    "latitude": 44.342481,
+    "longitude": 11.713185
   },
   {
     "name": "Monaco Grand Prix",
@@ -82,5 +82,26 @@
     "date-end": "2025-07-06",
     "latitude": 52.07307,
     "longitude": -1.01615
+  },
+  {
+    "name": "Belgian Grand Prix",
+    "date-start": "2025-07-25",
+    "date-end": "2025-07-27",
+    "latitude": 50.437828,
+    "longitude": 5.970125
+  },
+  {
+    "name": "Hungarian Grand Prix",
+    "date-start": "2025-08-01",
+    "date-end": "2025-08-03",
+    "latitude": 47.584313,
+    "longitude": 19.251094
+  },
+  {
+    "name": "Dutch Grand Prix",
+    "date-start": "2025-08-29",
+    "date-end": "2025-08-31",
+    "latitude": 52.388819,
+    "longitude": 4.540922
   }
 ]
