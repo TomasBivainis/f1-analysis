@@ -98,7 +98,7 @@ def get_race_links(url):
       
   return links
 
-def main():
+def get_race_data():
   print("Scraping race results...")
   
   race_links = get_race_links("https://www.formula1.com/en/results/2025/races")
@@ -117,4 +117,4 @@ def main():
   print("Scraping complete!")
   
 if __name__ == "__main__":
-  main()
+  get_race_data()
