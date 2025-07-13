@@ -121,4 +121,4 @@ def get_racetrack_data():
   print("Scraping complete!")
   
 if __name__ == "__main__":
-  main()
+  get_racetrack_data()
