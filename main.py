@@ -1,9 +1,9 @@
-from race_scraper import get_race_results
-from racetrack_scrapper import get_racetrack_data
+from race_scraper import scrape_race_data
+from racetrack_scrapper import scrape_racetrack_data
 
 def main():
-  get_race_results()
-  get_racetrack_data()
+  scrape_race_data()
+  scrape_racetrack_data()
 
 if __name__ == "__main__":
   main()

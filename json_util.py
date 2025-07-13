@@ -13,6 +13,9 @@ def save_to_json(data, filename: str, dir:str = "data"):
   Returns:
       None
   """
+  if not os.path.exists(dir):
+    os.makedirs(dir)
+  
   with open(os.path.join(dir, filename + ".json"), "w") as json_file:
     json.dump(data, json_file)
     
