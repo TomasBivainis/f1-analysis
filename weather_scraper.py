@@ -1,17 +1,12 @@
-import os
-import json
+from json_util import *
 
-def load_json(filename: str, dir: str = "data"):
-    """
-    Loads and parses a JSON file from the specified directory.
+def get_race_weather():
+  racetracks = load_json("racetracks")
+  race_results = load_json("race_results")
+  
+  print(racetracks)
+  print(race_results)
 
-    Args:
-        filename (str): The name of the JSON file.
-        dir (str): The directory where the file is located.
 
-    Returns:
-        object: The parsed Python object (dict or list) from the JSON file.
-    """
-    filepath = os.path.join(dir, filename)
-    with open(filepath, "r", encoding="utf-8") as f:
-        return json.load(f)
+if __name__ == "__main__":
+  get_race_weather()
