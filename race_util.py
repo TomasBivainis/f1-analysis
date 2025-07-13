@@ -51,3 +51,10 @@ class Racetrack:
   
   def __repr__(self):
     return f"{self.name} - {self.date_start} - {self.date_end}"
+  
+  def to_dict(self):
+    return {
+      "city": self.city,
+      "latitude": self.latitude,
+      "longitude": self.longitude,
+    }
