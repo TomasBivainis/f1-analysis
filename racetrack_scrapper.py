@@ -102,7 +102,7 @@ def get_coordinates(url):
     
     return [latitude, longitude]
 
-def get_racetrack_data():
+def scrape_racetrack_data():
   print("Scraping racetracks...")
   
   race_links = get_racetrack_links("https://ff1gp.com/circuits")
@@ -121,4 +121,4 @@ def get_racetrack_data():
   print("Scraping complete!")
   
 if __name__ == "__main__":
-  get_racetrack_data()
+  scrape_racetrack_data()
