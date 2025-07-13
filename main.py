@@ -1,14 +1,9 @@
-import requests
-from dotenv import load_dotenv
-import os
-load_dotenv()
+from race_scraper import get_race_results
+from racetrack_scrapper import get_racetrack_data
 
-url = os.getenv("BASE_API_URL")
+def main():
+  get_race_results()
+  get_racetrack_data()
 
-response = requests.get("https://api.openf1.org/v1/car_data?driver_number=55&session_key=9159&speed%3E=315")
-
-if response.status_code == 200:
-  data = response.json()
-  print(data)
-else:
-  print(f"Error: {response.status_code}")
+if __name__ == "__main__":
+  main()
