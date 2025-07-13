@@ -2,4 +2,4 @@
 
 ## Commands
 
-- type `python3 main.pt` to scrape all of the needed information.
+- type `python3 main.py` to scrape all of the needed information.
