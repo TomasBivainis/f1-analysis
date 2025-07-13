@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright
 from race_util import *
 from json_util import *
+from lang_util import *
 
 def get_race_results(url):
   with sync_playwright() as p:
@@ -101,17 +102,15 @@ def get_coordinates(url):
     
     return [latitude, longitude]
 
-def main():
+def get_racetrack_data():
   print("Scraping racetracks...")
   
   race_links = get_racetrack_links("https://ff1gp.com/circuits")
   
-  print(race_links)
-  
   racetracks = []
   
   for race_url in race_links:
-    city = get_city(race_url).split(", ")[0]
+    city = replace_weird_characters(get_city(race_url).split(", ")[0])
     print(city)
     [latitude, longitude] = get_coordinates(race_url)
     

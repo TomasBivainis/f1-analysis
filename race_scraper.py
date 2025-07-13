@@ -2,6 +2,7 @@ from playwright.sync_api import sync_playwright
 from race_util import *
 from json_util import *
 from date_util import *
+from lang_util import *
 
 def get_race_results(url):
   with sync_playwright() as p:
@@ -106,7 +107,8 @@ def get_race_data():
   races = []
   
   for race_url in race_links:
-    city = get_race_city(race_url)
+    city = replace_weird_characters(get_race_city(race_url))
+    print(city)
     [date_start, date_end] = get_race_dates(race_url)
     results = get_race_results(race_url)
     
