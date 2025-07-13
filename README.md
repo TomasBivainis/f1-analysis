@@ -2,4 +2,4 @@
 
 ## Commands
 
-- type `python3 race_scraper.py` to scrape the information about the given race in the files list.
+- type `python3 main.pt` to scrape all of the needed information.
