@@ -33,6 +33,19 @@ def convert_object_list_to_dict_list(object_list: list[object]):
     
   return res
 
+def convert_dict_list_to_object_list(dict_list: list[dict], object_type):
+    """
+    Converts a list of dictionaries to a list of objects of the specified type.
+
+    Args:
+        dict_list (list[dict]): List of dictionaries to convert.
+        object_type (type): The class/type to instantiate for each dictionary.
+
+    Returns:
+        list: List of instantiated objects.
+    """
+    return [object_type(**d) for d in dict_list]
+
 def load_json(filename: str, dir: str = "data"):
     """
     Loads and parses a JSON file from the specified directory.
