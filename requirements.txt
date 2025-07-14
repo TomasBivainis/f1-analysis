@@ -1,2 +1,7 @@
 requests
 python-dotenv
+playwright
+numpy 
+pandas 
+matplotlib 
+scikit-learn

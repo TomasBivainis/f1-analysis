@@ -37,7 +37,7 @@ def get_race_day_average_temperature(latitude: int, longitude: int, date: str):
 
   return (max_temperature + min_temperature) / 2
 
-def get_weather_data():
+def scrape_weather_data():
   print("Gathering weather data...")
   
   completed_race_coordinates = get_racetrack_information()
@@ -53,4 +53,4 @@ def get_weather_data():
   print("Gathering complete!")
 
 if __name__ == "__main__":
-  get_weather_data()
+  scrape_weather_data()

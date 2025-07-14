@@ -111,6 +111,12 @@ def scrape_racetrack_data():
   
   for race_url in race_links:
     city = replace_weird_characters(get_city(race_url).split(", ")[0])
+    
+    if city == "Miami Gardens":
+      city = "Miami"
+    elif city == "Montmelo":
+      city = "Barcelona"
+    
     print(city)
     [latitude, longitude] = get_coordinates(race_url)
     
