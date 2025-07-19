@@ -12,6 +12,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 from matplotlib.widgets import Button
+from matplotlib.ticker import MultipleLocator
 
 def count_all_team_points():
   race_results = load_json("race_results.json")
@@ -97,6 +98,8 @@ def main():
     ax.set_title(f'{teams[team_index]} vs {target}')
     ax.set_xlabel(target)
     ax.set_ylabel(teams[team_index])
+    ax.set_ylim(0.5, 20.5)
+    ax.yaxis.set_major_locator(MultipleLocator(2)) 
     ax.legend()
     fig.canvas.draw_idle()
   
