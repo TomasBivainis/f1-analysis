@@ -1,6 +1,6 @@
 from race_scraper import scrape_race_data
 from racetrack_scrapper import scrape_racetrack_data
-from weather_scraper import scrape_weather_data
+from weather_scraper import scrape_weather_data, get_only_needed_weather_data
 from json_util import *
 from race_util import Race
 from team_scraper import get_all_teams
@@ -32,7 +32,7 @@ def count_all_team_points():
     for result in race_result["race_result"]:
       if result["pos"] == None:
         if result["team"] in one_driver_out:
-          team_points_per_race[race_result["city"]][result["team"]] = 20
+          team_points_per_race[race_result["city"]][result["team"]] = 21
         else:
           one_driver_out.append(result["team"])
         continue
@@ -57,28 +57,24 @@ def main():
   weather_data = load_json("weather.json")
   teams = get_all_teams()
   
-  data = {
-    "temperature": weather_data.values(),
-  }
+  
+  target = "Temperature"
+  
+  dfs = {}
   
   for team in teams:
-    data[team] = get_team_points(team, team_points_per_race)
+    data = {}
+    temp_points = get_team_points(team, team_points_per_race)
+    temp_weather = get_only_needed_weather_data(temp_points, list(weather_data.values()))
+    
+    for i in reversed(range(len(temp_points))):
+      if temp_points[i] == 21:
+        temp_points.pop(i)
+    
+    data["points"] = temp_points
+    data[target] = temp_weather
+    dfs[team] = pd.DataFrame(data)
   
-  if len(data[team]) != len(data["temperature"]):
-    not_matching_cities = ""
-    
-    for city in team_points_per_race.keys():
-      if city not in weather_data.keys():
-        if not_matching_cities == "":
-          not_matching_cities = city
-        else:
-          not_matching_cities = not_matching_cities + ", " + city
-    
-    raise Exception("Some track cities are not matching: " + not_matching_cities)
-    
-  df = pd.DataFrame(data)
-  
-  target = "temperature"
   current_index = [0]
   
   fig, ax = plt.subplots()
@@ -86,8 +82,10 @@ def main():
   
   def plot_regression(team_index):
     ax.clear()
+    df = dfs[teams[team_index]]
+    
     X = df[[target]].values
-    y = df[teams[team_index]].values
+    y = df["points"].values
 
     model = LinearRegression()
     model.fit(X, y)

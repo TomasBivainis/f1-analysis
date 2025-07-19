@@ -37,6 +37,14 @@ def get_race_day_average_temperature(latitude: int, longitude: int, date: str):
 
   return (max_temperature + min_temperature) / 2
 
+def get_only_needed_weather_data(results, weather):
+  for i in reversed(range(len(results))):
+    if results[i] == 21:
+      weather.pop(i)
+      results.pop(i)
+  
+  return weather
+
 def scrape_weather_data():
   print("Gathering weather data...")
   
