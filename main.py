@@ -13,6 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 from matplotlib.widgets import Button
 from matplotlib.ticker import MultipleLocator
+from sklearn.preprocessing import PolynomialFeatures
 
 def count_all_team_points():
   race_results = load_json("race_results.json")
@@ -86,19 +87,37 @@ def main():
     
     X = df[[target]].values
     y = df["points"].values
+    
+    poly = PolynomialFeatures(degree=3)
+    X_poly = poly.fit_transform(X)  # X is your input variable
 
     model = LinearRegression()
-    model.fit(X, y)
-    y_pred = model.predict(X)
+    model.fit(X_poly, y)
+    y_pred = model.predict(X_poly)
+    
+    # Generate a smooth range of X values for plotting the curve
+    X_range = np.linspace(X.min(), X.max(), 200).reshape(-1, 1)
+    X_range_poly = poly.transform(X_range)
+    y_range_pred = model.predict(X_range_poly)
+    
+    # Calculate R^2 and RMSE
+    r2 = r2_score(y, y_pred)
+    rmse = np.sqrt(mean_squared_error(y, y_pred))
 
     ax.scatter(X, y, label='Actual')
-    ax.plot(X, y_pred, color='red', label='Regression line')
+    ax.plot(X_range, y_range_pred, color='red', label='Regression curve')
     ax.set_title(f'{teams[team_index]} vs {target}')
     ax.set_xlabel(target)
     ax.set_ylabel(teams[team_index])
     ax.set_ylim(0.5, 20.5)
     ax.yaxis.set_major_locator(MultipleLocator(2)) 
     ax.legend()
+    
+    # Show R^2 and RMSE on the plot
+    textstr = f'$R^2$: {r2:.3f}\nRMSE: {rmse:.3f}'
+    ax.text(0.02, 0.98, textstr, transform=ax.transAxes, fontsize=10,
+      verticalalignment='top', bbox=dict(boxstyle='round', facecolor='white', alpha=0.7))
+    
     fig.canvas.draw_idle()
   
   # Button callbacks
