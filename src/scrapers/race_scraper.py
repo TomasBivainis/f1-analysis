@@ -1,8 +1,8 @@
 from playwright.sync_api import sync_playwright
-from race_util import *
-from json_util import *
-from date_util import *
-from lang_util import *
+from src.utils.race_util import *
+from src.utils.json_util import *
+from src.utils.date_util import *
+from src.utils.lang_util import *
 
 def get_race_results(url):
   with sync_playwright() as p:

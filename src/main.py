@@ -1,9 +1,9 @@
-from race_scraper import scrape_race_data
-from racetrack_scrapper import scrape_racetrack_data
-from weather_scraper import scrape_weather_data, get_only_needed_weather_data
-from json_util import *
-from race_util import Race
-from team_scraper import get_all_teams
+from src.scrapers.race_scraper import scrape_race_data
+from src.scrapers.racetrack_scraper import scrape_racetrack_data
+from src.scrapers.weather_scraper import scrape_weather_data, get_only_needed_weather_data
+from src.utils.json_util import *
+from src.utils.race_util import Race
+from src.scrapers.team_scraper import get_all_teams
 
 import pandas as pd
 import numpy as np

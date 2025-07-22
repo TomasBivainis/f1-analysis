@@ -1,4 +1,4 @@
-from json_util import convert_object_list_to_dict_list
+from src.utils.json_util import convert_object_list_to_dict_list
 
 class Driver:
   def __init__(self, name: str, team: str, pos: int):

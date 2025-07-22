@@ -1,5 +1,5 @@
-from json_util import *
-from race_util import Race, Racetrack
+from src.utils.json_util import *
+from src.utils.race_util import Race, Racetrack
 from dotenv import load_dotenv
 import os
 import requests
