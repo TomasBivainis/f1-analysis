@@ -1,0 +1,7 @@
+# Static URLs used throughout the project
+
+FORMULA1_RACE_LIST_URL = "https://www.formula1.com/en/results/2025/races"
+FORMULA1_BASE_URL = "https://www.formula1.com"
+FF1GP_CIRCUITS_URL = "https://ff1gp.com/circuits"
+FF1GP_BASE_URL = "https://ff1gp.com"
+OPEN_METEO_API_BASE_URL = "https://archive-api.open-meteo.com/v1/archive"
