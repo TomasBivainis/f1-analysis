@@ -1,5 +1,5 @@
-/__*
 /.vscode
 /.env
 /.venv
 /data
+__pycache__
