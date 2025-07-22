@@ -2,7 +2,7 @@
 
 ## Commands
 
-- type `python3 main.py` to scrape all of the needed information.
+- type `python3 run.py` to scrape all of the needed information.
 
 sum of thing in degree 2:
 r^2 = 1.328
